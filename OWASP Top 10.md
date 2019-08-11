@@ -12,15 +12,13 @@ TODO: Use the OWASP document to explain
  	Even though using injection as a form of attack could be a tedious process due to trying to figure out the correct method, it pays off for attackers. A lot of the time these attacks are used to steal information from the Host. These could range from user accounts and passwords to gain access to sensitive files and data to also giving the attacker a reverse shell onto the server allow them to potentially gain access and escalate privileges.
 
 #### How it Works
-Explain how attackers build and deliver injection payloads. 
-
+#Explain how attackers build and deliver injection payloads: 
 	When an attacker begins to test how to properly attack a host, they most likely will begin a lot of trial and error. One thing that the attack needs to know is what kind of injection language to use and how the website is set up. After fine tunning some of the info trying multiple types of attacks is needed to figure out which methods and combinations would be most effective to break out of the text to inject code. A lot of the time using Burp Suite is going to be your best bet, due to the many tools that allow you to view and follow and test a wide arrange of methods to attack certain things.
 
 #### Scenario
 Explain the UNION injection in the following URL: <http://ptl-f99df351-3bdd4c8f.libcurl.so/cat.php?id=1%20UNION%20SELECT%201,concat(login,%27:%27,password),3,4%20FROM%20users>
 
-
-	Union in this URL is used to access more than one table located on the server to be able to access more than one set of info. In this example the two tables that are being called are login and password.
+Union in this URL is used to access more than one table located on the server to be able to access more than one set of info. In this example the two tables that are being called are login and password.
 
 ---
 ### A2:2017 - Broken Authentication
@@ -32,9 +30,9 @@ Use the OWASP document to explain
  - What kind of damage can be done (e.g., data stealing, account tampering, etc.):
  
 	The kind of damage that can be done from these attacks becomes almost endless. Gaining access to an administrator account can open the doors to a lot of data that can be stolen. A few major are the leaking of sensitive user data that is stored that can lead to social security fraud as well as identity theft. Another vector that can be extorted is money laundering or blackmail so that certain information is not released somewhere.
+	
 ### How it Works
 Explain why the **Brute Force** section in DVWA qualifies as a Broken Authentication vulnerability.
-
 	When a user gets into a system the system authenticates the credentials that are put in and makes sure that they are valid. If the authentication process has any vulnerabilities like being susceptible to a dictionary attack, this means that it is a vulnerability. WIth DVWA you have the ability to use tools inside BurpSuite to stuff a large amount of usernames and passwords to try and login and that would count as a brute force attack.
 
 ### Scenario
@@ -96,21 +94,17 @@ Upgrade-Insecure-Requests: 1
 username=admin&password=password&Login=Login&user_token=e9cc4782ef872491dad574bdc737d247
 
 ##### Mitigation
-Explain two strategies for preventing this kind of attack:
-
+##Explain two strategies for preventing this kind of attack:
 	One step to mitigate this kind of attack would make parameters around usernames and passwords for accounts. By making passwords longer and adding other characters to it, it will make using password lists harder due to not being able to guess the password off the bat as well as increasing the bit size. With the larger bit size of the password, if the hashed password string were to be intercepted it would increase the time to decode it a lot longer the larger it is. 
-
 	There are many other ways to defend against a "brute force" attack on a login form but a few other good ways to mitigate this potential is to use the lockout functionality as well as delay requests. With the lockout functionality, the account would be temporarily disabled and would require the owner of the account to access it to reactivate it. The delay of requests method would limit the amount of times a user could attempt to login to the account and then set a time delay before the user could try again. Making the process of trying to log on take a lot longer. 
 
 ---
 ### A6:2017 - Security Misconfiguration
 #### Definition / Description
-Use the OWASP document to explain:
- 
+#Use the OWASP document to explain:
  	Security misconfiguration vulnerabilities could occur when a setting or a component of an application was not properly configured or secured. A lot of these issues from insecure default configurations as well as poorly documented configurations to see where there might be an issue. Some of the areas that allow would qualify for being misconfigured would be areas such as not setting proper security headers on a web server or not disabling default configurations or functionality on a platform that could grant administrative access to an attacker. 
 
- What kind of damage it can do to a business:
-
+#What kind of damage it can do to a business:
  	If an attacker is able to exploit this type of attacker they could potentially gain access to a whole system. Whether it be a server or a computer the outcome can be very bad. The attacker could steal information or even destroy the server that they are on and cost the company a lot of money. They could also gain access to admin accounts and settings and set up back doors for later attacks or even pretend to be an admin and depending on what kind of platform the attacker got into, the ramifications could be endless.
 
 #### Scenario
@@ -144,7 +138,7 @@ Use the OWASP document to explain:
 #### How it Works
 Explain how a reflected XSS payload gets echoed from an HTTP request to an HTML document:
 
-	When the injection payload is transferred to an HTML document it can vary as to what it looks like. If the attacker is exploiting a section with an input for a username, when the payload is injected to the website it would print out a list of usernames on the screen for the attacker. Another example would be to steal cookie sessions that could be later used by the attacker and could be alerted on the screen so that it could be used. 
+When the injection payload is transferred to an HTML document it can vary as to what it looks like. If the attacker is exploiting a section with an input for a username, when the payload is injected to the website it would print out a list of usernames on the screen for the attacker. Another example would be to steal cookie sessions that could be later used by the attacker and could be alerted on the screen so that it could be used. 
 
 EX: http://www.example.com/index.php?user=“><script>alert(document.cookie)</script> 
 -which would then take the current session cookie and create an alert on the screen and show the session cookie.
@@ -164,7 +158,5 @@ Insecure Deserialization:
 	Another way to help mitigate against this would be to put deserialization events in a low privilege environment so that in the event that a malicious code or change of some kind were to be implemented it would not have the correct permissions to properly execute.
 
 Sensitive Data Exposure:
-
-	Sensitive data exposure is when data and or traffic going inbetween a user and an application is not secure. Some cases of this would be user's credit card information, health records, usernames and passowrds as well as personal information. The impact from an attacker being able to intercept this kind of information could be devistating. A lot of information could be taken and sold for a monitary value or even allow the attacker to pretend to be someone else. When an application send and or recieves information, if the data that is being sent over the internet is not encrypted it will allow it to be viewed in plain text. But when encrypting information, the host needs to make sure that the encryption method is not out of date or the default method of doing so. When old methods of encrypting data is used the way to decrypt it could be very easy for the attacker. Also something that needs to be checked would be if there are configurations missing that would make sure that secure connections are being made or data that is sent has to be encrypted.
-	
+	Sensitive data exposure is when data and or traffic going inbetween a user and an application is not secure. Some cases of this would be user's credit card information, health records, usernames and passowrds as well as personal information. The impact from an attacker being able to intercept this kind of information could be devistating. A lot of information could be taken and sold for a monitary value or even allow the attacker to pretend to be someone else. When an application send and or recieves information, if the data that is being sent over the internet is not encrypted it will allow it to be viewed in plain text. But when encrypting information, the host needs to make sure that the encryption method is not out of date or the default method of doing so. When old methods of encrypting data is used the way to decrypt it could be very easy for the attacker. Also something that needs to be checked would be if there are configurations missing that would make sure that secure connections are being made or data that is sent has to be encrypted.	
 	To make sure thst this type of vulnerability does not become an issue, identify what information might be sensitve and set up policies to make sure that it is encrypted and sent securly from place to place. Some other ways would also be to make sure that data that contains sensitive material is not stored for longer than it is needed and goes back to being encrypted as well as making sure that the encryption methods are strong and are used correcly. Lastly, test out the settings in place and verify that the settings that were implemented are working.
