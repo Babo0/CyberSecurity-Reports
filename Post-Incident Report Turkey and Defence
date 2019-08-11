@@ -1,15 +1,14 @@
 Post-Incident Report Turkey and Defence
 
-Date of investigation	July 11, 2019
-Date of incident	2018-11-07 20:47 UTC
-Outcome	True Positive- The file downloaded was Ursnif Malware or the variant Gozi/IFSB
-Action Taken	Identified Malware & initially infected Host Device Advise potentially adding firewall rules to block traffic from source of Malware. Advise restoring host computer to a backup done before the infection date or reimage the hard drive if no back up is present. Run AV- confirmation that the Malware has been removed and is no longer on the host computer.
-Reporting tools	Snort, Sguil on Security Onion, and Wireshark (examine .pcap files)
-Attack Vector	Web-based Malware Attack
-Source IPSource Port	10.22.15.11980
-Destination IPDestination Port	Shumbildac[.]com/ 46.29.160.13249208
-Narrative
-
+Date of investigation:	July 11, 2019
+Date of incident:	2018-11-07 20:47 UTC
+Outcome:	True Positive- The file downloaded was Ursnif Malware or the variant Gozi/IFSB
+Action Taken:	Identified Malware & initially infected Host Device Advise potentially adding firewall rules to block traffic from source of Malware. Advise restoring host computer to a backup done before the infection date or reimage the hard drive if no back up is present. Run AV- confirmation that the Malware has been removed and is no longer on the host computer.
+Reporting tools:	Snort, Sguil on Security Onion, and Wireshark (examine .pcap files)
+Attack Vector:	Web-based Malware Attack
+Source: IPSource/Port	10.22.15.11980
+Destination: IPDestination/Port	Shumbildac[.]com/ 46.29.160.13249208
+Narrative:
 Alerted by Snort
 
 "ET POLICY Binary Download Smaller than 1 MB Likely Hostile"
@@ -23,18 +22,14 @@ Dst/Prt: 46.29.160.132:49208
 Time Stamp: 2018-11-07 20:47 UTC
 Identified IP Address and communications from Snort logs:
 
-
-
-Post-Incident Report
-
-
+Post-Incident Report:
 
 Identified Hostname and MAC address of infected host computer from *.pcap:
 MAC address: 00:11:2f:d1:6e:52
 Host Name: Danger-Win-PC
 
 
-Post-Incident Report
+Post-Incident Report:
 
 Identified network traffic and potential file download by using the http filter in Wireshark.
 The user was also viewing other sources while this file was downloaded
@@ -51,7 +46,7 @@ With the DOS header being an indication of a potential malicious item, the follo
 Using Wireshark to download HTTP objects, found the "ngul5.xap"
 
 
-Post-Incident Report
+Post-Incident Report:
 
 Upon saving the "*.xap" file the SHA256 sum needed to be verified to make sure that the download was actually malicious
 
@@ -62,5 +57,6 @@ Virustotal came back with the results of 57/70 AV companies came back as this be
 Under the comments section it came back as Ursnif
 Adding a firewall rules to potentially block future infections from this Malware
 
+#Firewall Suggestions :
 IPv4 destination address and port.
 iptables --append INPUT --in-interface eth0 --protocol tcp --source 46.29.160.132/32 --source-port 80 --jump DROP
